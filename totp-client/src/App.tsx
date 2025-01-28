@@ -15,7 +15,7 @@ function App() {
 
   return (
     <main className="container">
-      <TOTPClient serverUrl="http://localhost:3000" />
+      <TOTPClient serverUrl="http://localhost:3002" />
     </main>
   );
 }
