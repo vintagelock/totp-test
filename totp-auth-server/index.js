@@ -3,6 +3,10 @@ const app = express();
 const { authenticator } = require('otplib');
 const QRCode = require('qrcode');
 
+var cors = require('cors');
+
+app.use(cors());
+
 app.use(express.json()); // Enables express to parse JSON bodies
 
 const PORT = process.env.PORT || 3000;
@@ -13,6 +17,7 @@ let userSecrets = {};
 
 
 app.post('/user/register', async (req, res) => {
+  console.log("In Register");
   const { email } = req.body;
   if (!email) {
     return res.status(400).json({ message: 'Email is required' });
