@@ -24,6 +24,8 @@ app.post('/user/register', async (req, res) => {
   }
 
   const secret = authenticator.generateSecret();
+
+  console.log("Secret: ", secret);
   // Store the secret using the email as a key
   userSecrets[email] = secret;
 
