@@ -55,10 +55,10 @@ const TOTPClient = ({ serverUrl = '' }) => {
     };
 
     return (
-        <div className="p-4">
+        <div className="mx-auto">
             <h1 className="text-2xl font-bold mb-4">TOTP Client</h1>
 
-            <div className="mb-4">
+            <div className="mb-4 space-y-2">
                 <label className="block mb-2 font-semibold">Email:</label>
                 <input
                     type="email"
@@ -67,17 +67,17 @@ const TOTPClient = ({ serverUrl = '' }) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                 />
+
+                <button
+                    onClick={handleRegister}
+                    className="bg-blue-500 text-white"
+                >
+                    Register
+                </button>
             </div>
 
-            <button
-                onClick={handleRegister}
-                className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-            >
-                Register
-            </button>
-
             {qrCodeUrl && (
-                <div className="mb-4">
+                <div className="flex flex-col items-center mb-4">
                     <h2 className="text-xl font-semibold mb-2">Scan this QR Code:</h2>
                     <img src={qrCodeUrl} alt="TOTP QR Code" className="border rounded" />
                     {secret && (
@@ -86,7 +86,7 @@ const TOTPClient = ({ serverUrl = '' }) => {
                 </div>
             )}
 
-            <div className="mb-4">
+            <div className="mb-4 space-y-2">
                 <label className="block mb-2 font-semibold">Token:</label>
                 <input
                     type="text"
@@ -95,14 +95,14 @@ const TOTPClient = ({ serverUrl = '' }) => {
                     onChange={(e) => setToken(e.target.value)}
                     placeholder="Enter the TOTP token"
                 />
-            </div>
 
-            <button
-                onClick={handleVerify}
-                className="bg-green-500 text-white px-4 py-2 rounded"
-            >
-                Verify Token
-            </button>
+                <button
+                    onClick={handleVerify}
+                    className="bg-green-500 text-white px-4 py-2 rounded"
+                >
+                    Verify Token
+                </button>
+            </div>
 
             {verificationMessage && (
                 <p className="mt-4 font-semibold">
